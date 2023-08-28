@@ -24,7 +24,7 @@ const calculator = {
 function caesarCipher(str, shiftFactor) {
     let cipherText = '';
     for (let i = 0; i < str.length; i++) {
-        cipherText + String.fromCharCode(charCodeAt[i] + 3);
+        cipherText = cipherText + String.fromCharCode(str.charCodeAt(i) + shiftFactor);
     }
     return cipherText;
 }
@@ -49,7 +49,7 @@ function analyzeArray(arr) {
     }
 }
 
-export default {
+module.exports = {
     capitalize,
     reverseString,
     calculator,
