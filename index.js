@@ -22,16 +22,38 @@ const calculator = {
 }
 
 function caesarCipher(str, shiftFactor) {
+    function shiftText(charCode, shift) { // wrap from z to a
+        let newCode = charCode + shift;
+        if (charCode >= 65 && charCode <= 90) { // uppercase
+            if (newCode > 90) {
+                newCode = 64 + (newCode - 90);
+            }
+        } else if (charCode >= 97 && charCode <= 122) {
+            if (newCode > 122) {
+                newCode = 96 + (newCode - 122);
+            }
+        }
+        return newCode;
+    }
+
     let cipherText = '';
     for (let i = 0; i < str.length; i++) {
-        cipherText = cipherText + String.fromCharCode(str.charCodeAt(i) + shiftFactor);
+        const charCode = str.charCodeAt(i);
+
+        if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122)) {
+            const newCode = shiftText(charCode, shiftFactor);
+            cipherText += String.fromCharCode(newCode);
+        } else {
+            cipherText += str[i];
+        }
     }
+
     return cipherText;
 }
 
 function analyzeArray(arr) {
     function calculateAverage(array) {
-        if (numbers.length === 0) return 0;
+        if (array.length === 0) return 0;
 
         let sum = 0;
         array.forEach(num => {
@@ -43,10 +65,12 @@ function analyzeArray(arr) {
 
     const object = {
         average: calculateAverage(arr),
-        min: min(...arr),
-        max: max(...arr),
+        min: Math.min(...arr),
+        max: Math.max(...arr),
         length: arr.length
     }
+
+    return object;
 }
 
 module.exports = {

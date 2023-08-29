@@ -36,3 +36,20 @@ test('hello to equal khoor', () => {
 test('zombie to equal crpelh', () => {
     expect(caesarCipher('zombie', 3)).toBe('crpelh');
 });
+test('ZzabcC19,./A to equal CcdefF19,./D', () => {
+    expect(caesarCipher('ZzabcC19,./A', 3)).toBe('CcdefF19,./D');
+});
+
+// analyzeArray function
+test('1, 2, 3, 4, 5 array average to equal 3', () => {
+    expect(analyzeArray([1, 2, 3, 4, 5]).average).toBe(3);
+});
+test('1, 2, 3, 4, 5 array min to equal 1', () => {
+    expect(analyzeArray([1, 2, 3, 4, 5]).min).toBe(1);
+});
+test('1, 2, 3, 4, 5 array max to equal 5', () => {
+    expect(analyzeArray([1, 2, 3, 4, 5]).max).toBe(5);
+});
+test('1, 2, 3, 4, 5 array length to equal 5', () => {
+    expect(analyzeArray([1, 2, 3, 4, 5]).length).toBe(5);
+});
